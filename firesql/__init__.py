@@ -132,7 +132,9 @@ class Firesql(object):
         filters=None,
         type_class=True,
         data_filter: dict = {},
-        or_join=False
+        or_join=False,
+        order_by=None,
+        ascendent=True,
     ):
         session = self.session()
         query = session.query(model)
@@ -143,6 +145,10 @@ class Firesql(object):
             query = query.filter(filter_data)
         if filters is not None:
             query = query.filter(filters)
+        if order_by is not None:
+            order = getattr(model, order_by).asc(
+            ) if ascendent else getattr(model, order_by).desc()
+            query = query.order_by(order)
         if page_size > 0:
             query = query.limit(page_size)
         if page > 0:
