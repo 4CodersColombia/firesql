@@ -4,7 +4,7 @@ import setuptools
 
 setup(
     name='firesql',
-    version='0.1.1',
+    version='0.1.2',
     include_package_data=True,
     description='Library to use databases sql or not-sql',
     author='Andres Gonzalez',
@@ -14,10 +14,10 @@ setup(
     url='https://github.com/4CodersColombia/firesql',
     download_url='https://github.com/4CodersColombia/firesql/tarball/0.1',
     keywords=['sql', 'no-sql'],
-    classifiers=['Programming Language :: Python :: 3.9',],
-    packages = setuptools.find_packages(),
+    classifiers=['Programming Language :: Python :: 3.9', ],
+    packages=setuptools.find_packages(),
     install_requires=[
-          'pymysql',
-      ],
+        'pymysql==1.0.2',
+        'alembic==1.6.5'
+    ],
 )
-
