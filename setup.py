@@ -4,7 +4,7 @@ import setuptools
 
 setup(
     name='firesql',
-    version='0.1.5',
+    version='0.1.6',
     include_package_data=True,
     description='Library to use databases sql or not-sql',
     author='Andres Gonzalez',
@@ -18,6 +18,7 @@ setup(
     packages=setuptools.find_packages(),
     install_requires=[
         'pymysql==1.0.2',
-        'alembic==1.6.5'
+        'alembic==1.6.5',
+        'greenlet==1.1.2'
     ],
 )

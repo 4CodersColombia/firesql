@@ -145,6 +145,7 @@ class Firesql(object):
             query = query.filter(filter_data)
         if filters is not None:
             query = query.filter(filters)
+        total_count = query.count()
         if order_by is not None:
             order = getattr(model, order_by).asc(
             ) if ascendent else getattr(model, order_by).desc()
@@ -156,8 +157,8 @@ class Firesql(object):
         data: list[type[model]] = query.all()
         if not type_class:
             list_data = list(map(lambda x: x.__dict__, data))
-            return list(map(self.iterdict, list_data))
-        return data
+            return list(map(self.iterdict, list_data)), total_count
+        return data, total_count
 
     def validate_data_singled_read(self, model, filter_data: dict, or_join=False):
         values_in_model = dir(model)
